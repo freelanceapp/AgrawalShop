@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">E-Commerce</string>
+    <string name="verify_proceed"><![CDATA[Verify & Proceed]]></string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="mobile_desc">It\'s time to go big with the Redmi Note 7 Pro\'s 16-cm (6.3) FHD+ Dot Notch display. Powered by a 2.0 GHz Qualcomm Snapdragon 675 processor and 6 GB of RAM, this smartphone lets you experience the next level of performance and control. With a (48 MP + 5 MP) dual-rear camera, a 13 MP front camera, and features such as Face Unlock and 4K Video Recording, the Redmi Note 7 Pro truly puts a new spin on your smartphone experience.</string>
+    <string name="mobile_warranty_desc">Enjoy a seamless and efficient smartphone experience, thanks to the powerful 2.0 GHz Qualcomm Snapdragon 675 processor. Whether you\'re playing games, watching videos, or browsing the Internet, the Redmi Note 7 Pro delivers a super-fast performance. It also comes with 128 GB of storage capacity, so you can store all your pictures and music with ease.</string>
+
+</resources>
