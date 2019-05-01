@@ -26,7 +26,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_detail);
+        setContentView(R.layout.activity_product_detail_2);
 
         init();
     }
@@ -68,14 +68,14 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.txtDescriptionClick:
-                findViewById(R.id.txtDescriptionClick).setBackgroundColor(getResources().getColor(R.color.white));
-                findViewById(R.id.txtWarrantyClick).setBackgroundColor(getResources().getColor(R.color.gray_h));
+                findViewById(R.id.txtDescriptionClick).setBackgroundResource(R.drawable.btn_bg);
+                findViewById(R.id.txtWarrantyClick).setBackgroundResource(R.drawable.btn_bg_gray);
                 findViewById(R.id.txtDescription).setVisibility(View.VISIBLE);
                 findViewById(R.id.txtWarrantyDescription).setVisibility(View.GONE);
                 break;
             case R.id.txtWarrantyClick:
-                findViewById(R.id.txtDescriptionClick).setBackgroundColor(getResources().getColor(R.color.gray_h));
-                findViewById(R.id.txtWarrantyClick).setBackgroundColor(getResources().getColor(R.color.white));
+                findViewById(R.id.txtDescriptionClick).setBackgroundResource(R.drawable.btn_bg_gray);
+                findViewById(R.id.txtWarrantyClick).setBackgroundResource(R.drawable.btn_bg);
                 findViewById(R.id.txtDescription).setVisibility(View.GONE);
                 findViewById(R.id.txtWarrantyDescription).setVisibility(View.VISIBLE);
                 break;

@@ -37,6 +37,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:padding="14dp"
+        android:visibility="gone"
         android:text="Developed by Infobite Technology"
         android:textColor="@color/white"
         android:textSize="16sp" />
