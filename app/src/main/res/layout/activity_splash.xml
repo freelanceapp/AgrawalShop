@@ -11,7 +11,8 @@
         android:layout_centerInParent="true"
         android:text="Welcome to"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/txtTitle"
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtWelcome"
         android:layout_centerInParent="true"
-        android:text="E-Commerce"
+        android:text="@string/app_name"
         android:textColor="@color/white"
         android:textSize="34sp" />
 
@@ -37,8 +38,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:padding="14dp"
-        android:visibility="gone"
         android:text="Developed by Infobite Technology"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:visibility="gone" />
 </RelativeLayout>

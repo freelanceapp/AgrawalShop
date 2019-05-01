@@ -62,8 +62,7 @@
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/rvImage"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-
+                            android:layout_height="wrap_content" />
 
                     </LinearLayout>
 
@@ -71,15 +70,12 @@
                         android:id="@+id/imgProduct"
                         android:layout_width="match_parent"
                         android:layout_height="400dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginLeft="42dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="42dp"
                         android:layout_marginTop="20dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_toRightOf="@+id/llSideImage"
+                        android:layout_marginEnd="10dp"
+                        android:layout_toEndOf="@+id/llSideImage"
                         android:src="@drawable/rocket_d" />
-
-
-
 
                     <android.support.v4.view.ViewPager
                         android:id="@+id/viewPager"
@@ -104,10 +100,10 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="-30dp"
-                    android:scaleType="fitXY"
-                    android:background="@color/white"
                     android:layout_below="@+id/llSideImage"
+                    android:layout_marginBottom="-30dp"
+                    android:background="@color/white"
+                    android:scaleType="fitXY"
                     android:src="@drawable/pr_rhl" />
 
                 <LinearLayout
@@ -116,139 +112,136 @@
                     android:background="@drawable/layout_bg1_rhl"
                     android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="20dp"
-                    android:text="Price"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="8dp"
-                    android:textColor="@color/white"
-                    android:textSize="22sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="8dp"
+                            android:text="Price"
+                            android:textColor="@color/white"
+                            android:textSize="22sp" />
 
-                <TextView
-                    android:id="@+id/txtPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="20dp"
-                    android:paddingBottom="8dp"
-                    android:paddingTop="10dp"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:layout_centerVertical="true"
-                    android:textSize="22sp" />
+                        <TextView
+                            android:id="@+id/txtPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:paddingStart="16dp"
+                            android:paddingTop="10dp"
+                            android:paddingEnd="20dp"
+                            android:paddingBottom="8dp"
+                            android:textColor="@color/white"
+                            android:textSize="22sp" />
 
-                </RelativeLayout>
+                    </RelativeLayout>
 
-                <!--<View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/gray_h" />-->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    <!--<View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_h" />-->
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/txtDescriptionClick"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_bg"
-                            android:gravity="center"
-                            android:text="Description"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/txtWarrantyClick"
-                            android:layout_width="0dp"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="20dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_bg_gray"
-                            android:gravity="center"
-                            android:text="Warranty"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <android.support.v7.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="400dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:background="@color/white"
-                        app:cardCornerRadius="20dp">
+                        android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/llDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:layout_gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <TextView
-                                android:id="@+id/txtDescription"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="16dp"
-                                android:textColor="@color/gray_a"
+                                android:id="@+id/txtDescriptionClick"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/btn_bg"
+                                android:gravity="center"
+                                android:text="Description"
                                 android:textSize="16sp" />
 
                             <TextView
-                                android:id="@+id/txtWarrantyDescription"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="16dp"
-                                android:textColor="@color/gray_a"
-                                android:textSize="16sp"
-                                android:visibility="gone" />
+                                android:id="@+id/txtWarrantyClick"
+                                android:layout_width="0dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/btn_bg_gray"
+                                android:gravity="center"
+                                android:text="Warranty"
+                                android:textSize="16sp" />
 
                         </LinearLayout>
 
-                    </android.support.v7.widget.CardView>
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/white"
+                            app:cardCornerRadius="20dp">
 
-                </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/llDescription"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txtDescription"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="16dp"
+                                    android:textColor="@color/gray_a"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/txtWarrantyDescription"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="16dp"
+                                    android:textColor="@color/gray_a"
+                                    android:textSize="16sp"
+                                    android:visibility="gone" />
+
+                            </LinearLayout>
+
+                        </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
 
 
-
-                <Button
-                    android:id="@+id/btnContact"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/layout_bg6_rhl"
-                    android:text="Contact"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white" />
+                    <Button
+                        android:id="@+id/btnContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/layout_bg6_rhl"
+                        android:text="Enquiry"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 

@@ -1,6 +1,7 @@
 package com.ibt.e_commerce.ui.activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -77,7 +78,7 @@ public class ContactUsActivity extends BaseActivity implements View.OnClickListe
                         try {
                             JSONObject jsonObject = new JSONObject(responseBody.string());
                             if (!jsonObject.getBoolean("error")) {
-
+                                startActivity(new Intent(mContext, ThankYouActivity.class));
                             } else {
                                 Alerts.show(mContext, jsonObject.getString("message"));
                             }

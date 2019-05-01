@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.ThankYouActivity">
+    android:orientation="vertical"
+    android:weightSum="10">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="2">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="#eff6f9"
-            android:layout_weight="1"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="#eff6f9"
-            android:layout_weight="1"/>
-    </LinearLayout>
+        android:layout_weight="4"
+        android:background="#EFF6F9">
 
-    <ImageView
-        android:id="@+id/imgRocket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/rocket_gif"
-        android:layout_centerInParent="true"/>
+        <ImageView
+            android:id="@+id/imgRocket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:adjustViewBounds="true" />
+    </RelativeLayout>
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_centerInParent="true"
-        android:paddingTop="200dp"
-        android:text="Thank You"/>
+        android:layout_height="match_parent"
+        android:layout_weight="6"
+        android:background="#fff">
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Thank You"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtContinue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="Continue Shopping"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</LinearLayout>

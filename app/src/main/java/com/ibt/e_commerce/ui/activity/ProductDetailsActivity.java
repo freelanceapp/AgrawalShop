@@ -2,7 +2,7 @@ package com.ibt.e_commerce.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +19,6 @@ import com.ibt.e_commerce.modal.category.ProductList;
 import com.ibt.e_commerce.utils.BaseActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProductDetailsActivity extends BaseActivity implements View.OnClickListener {
 
@@ -82,6 +81,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     }
 
     private void setData() {
+        ViewCompat.setElevation(findViewById(R.id.txtDescriptionClick), 10);
         ((TextView) findViewById(R.id.txtProductName)).setText(productData.getProductType());
         ((TextView) findViewById(R.id.txtPrice)).setText("Rs. " + productData.getProductPrice());
         ((TextView) findViewById(R.id.txtDescription)).setText(productData.getProductDescription());
@@ -93,11 +93,17 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         switch (v.getId()) {
             case R.id.txtDescriptionClick:
                 findViewById(R.id.txtDescriptionClick).setBackgroundResource(R.drawable.btn_bg);
+                ViewCompat.setElevation(findViewById(R.id.txtDescriptionClick), 10);
+                ViewCompat.setElevation(findViewById(R.id.txtWarrantyClick), 0);
+
                 findViewById(R.id.txtWarrantyClick).setBackgroundResource(R.drawable.btn_bg_gray);
                 findViewById(R.id.txtDescription).setVisibility(View.VISIBLE);
                 findViewById(R.id.txtWarrantyDescription).setVisibility(View.GONE);
                 break;
             case R.id.txtWarrantyClick:
+                ViewCompat.setElevation(findViewById(R.id.txtDescriptionClick), 0);
+                ViewCompat.setElevation(findViewById(R.id.txtWarrantyClick), 10);
+
                 findViewById(R.id.txtDescriptionClick).setBackgroundResource(R.drawable.btn_bg_gray);
                 findViewById(R.id.txtWarrantyClick).setBackgroundResource(R.drawable.btn_bg);
                 findViewById(R.id.txtDescription).setVisibility(View.GONE);
