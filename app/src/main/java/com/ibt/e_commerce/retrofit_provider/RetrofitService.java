@@ -6,6 +6,7 @@ import com.ibt.e_commerce.constant.Constant;
 import com.ibt.e_commerce.modal.banner.BannerMainModal;
 import com.ibt.e_commerce.modal.category.CategoryDataMainModal;
 import com.ibt.e_commerce.modal.main_category_product.MainCategoryProductMainModal;
+import com.ibt.e_commerce.modal.shop_detail_data.ShopDetailMainModal;
 import com.ibt.e_commerce.utils.AppProgressDialog;
 
 import okhttp3.ResponseBody;
@@ -121,6 +122,27 @@ public class RetrofitService {
 
             @Override
             public void onFailure(Call<MainCategoryProductMainModal> call, Throwable throwable) {
+                if (dialog != null)
+                    AppProgressDialog.hide(dialog);
+                webResponse.onResponseFailed(throwable.getMessage());
+            }
+        });
+    }
+
+    public static void getShopDetailData(final Dialog dialog, final Call<ShopDetailMainModal> method, final WebResponse webResponse) {
+        if (dialog != null)
+            AppProgressDialog.show(dialog);
+
+        method.enqueue(new Callback<ShopDetailMainModal>() {
+            @Override
+            public void onResponse(Call<ShopDetailMainModal> call, Response<ShopDetailMainModal> response) {
+                if (dialog != null)
+                    AppProgressDialog.hide(dialog);
+                WebServiceResponse.handleResponse(response, webResponse);
+            }
+
+            @Override
+            public void onFailure(Call<ShopDetailMainModal> call, Throwable throwable) {
                 if (dialog != null)
                     AppProgressDialog.hide(dialog);
                 webResponse.onResponseFailed(throwable.getMessage());

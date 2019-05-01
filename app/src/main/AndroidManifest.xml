@@ -39,6 +39,8 @@
         <activity android:name=".ui.activity.OtpActivity" />
         <activity android:name=".ui.activity.HomeActivity" />
         <activity android:name=".ui.activity.ProductDetailsActivity" />
+        <activity android:name=".ui.activity.ContactUsActivity" />
+        <activity android:name=".ui.activity.ThankYouActivity" />
     </application>
 
 </manifest>
