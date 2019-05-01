@@ -173,6 +173,6 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="8dp"
         android:background="@drawable/button_bg2"
-        android:text="Contact"
+        android:text="Enquiry"
         android:textColor="@color/white" />
 </RelativeLayout>

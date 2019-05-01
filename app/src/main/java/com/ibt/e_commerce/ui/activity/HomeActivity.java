@@ -10,6 +10,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ibt.e_commerce.R;
 import com.ibt.e_commerce.adapter.CategoryListAdapter;
@@ -20,6 +22,7 @@ import com.ibt.e_commerce.modal.category.CategoryList;
 import com.ibt.e_commerce.modal.category.Subcategory;
 import com.ibt.e_commerce.retrofit_provider.RetrofitService;
 import com.ibt.e_commerce.retrofit_provider.WebResponse;
+import com.ibt.e_commerce.ui.fragment.AboutFragment;
 import com.ibt.e_commerce.ui.fragment.CategoryFragment;
 import com.ibt.e_commerce.ui.fragment.FlowerPotFragment;
 import com.ibt.e_commerce.ui.fragment.HomeFragment;
@@ -37,7 +40,7 @@ import retrofit2.Response;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
-    //private DrawerLayout drawerLayout;
+    private ImageView imgHome, imgCategory, imgAbout;
     private boolean isVisible = false;
 
     private RecyclerView recyclerViewCategory;
@@ -61,6 +64,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void init() {
+        imgHome = findViewById(R.id.imgHome);
+        imgCategory = findViewById(R.id.imgCategory);
+        imgAbout = findViewById(R.id.imgAbout);
+
         fragmentManager = getSupportFragmentManager();
         fragmentUtils = new FragmentUtils(fragmentManager);
         findViewById(R.id.rlHome).setOnClickListener(this);
@@ -130,9 +137,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void initFragment() {
-        findViewById(R.id.rlHome).setBackgroundColor(getResources().getColor(R.color.colorAccent));
-        findViewById(R.id.rlCategory).setBackgroundColor(getResources().getColor(R.color.gray_h));
-        findViewById(R.id.rlAbout).setBackgroundColor(getResources().getColor(R.color.gray_h));
+        toolbar.setVisibility(View.VISIBLE);
+        imgHome.setImageResource(R.drawable.ic_home);
+        imgCategory.setImageResource(R.drawable.ic_product_black);
+        imgAbout.setImageResource(R.drawable.ic_about_black);
+
+        ((TextView) findViewById(R.id.tvHome)).setTextColor(getResources().getColor(R.color.black));
+        ((TextView) findViewById(R.id.tvCategory)).setTextColor(getResources().getColor(R.color.gray_c));
+        ((TextView) findViewById(R.id.tvAbout)).setTextColor(getResources().getColor(R.color.gray_c));
 
         toolbar.setTitle("Home");
         homeFragment = new HomeFragment();
@@ -178,6 +190,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         Fragment FlowerPotFragmentTag = fragmentManager.findFragmentByTag(Constant.FlowerPotFragment);
         Fragment ProductListFragmentTag = fragmentManager.findFragmentByTag(Constant.ProductListFragment);
         Fragment CategoryFragmentTag = fragmentManager.findFragmentByTag(Constant.CategoryFragment);
+        Fragment AboutFragmentTag = fragmentManager.findFragmentByTag(Constant.AboutFragment);
 
         if (HomeFragmentTag != null) {
             finish();
@@ -198,6 +211,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             initFragment();
             //fragmentUtils.replaceFragment(new HomeFragment(), Constant.HomeFragment, R.id.frameLayout);
         } else if (CategoryFragmentTag != null) {
+            toolbar.setTitle("Home");
+            initFragment();
+            //fragmentUtils.replaceFragment(new HomeFragment(), Constant.HomeFragment, R.id.frameLayout);
+        } else if (AboutFragmentTag != null) {
             toolbar.setTitle("Home");
             initFragment();
             //fragmentUtils.replaceFragment(new HomeFragment(), Constant.HomeFragment, R.id.frameLayout);
@@ -247,9 +264,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 //drawerLayout.closeDrawer(Gravity.START);
                 break;
             case R.id.rlCategory:
-                findViewById(R.id.rlHome).setBackgroundColor(getResources().getColor(R.color.gray_h));
-                findViewById(R.id.rlCategory).setBackgroundColor(getResources().getColor(R.color.colorAccent));
-                findViewById(R.id.rlAbout).setBackgroundColor(getResources().getColor(R.color.gray_h));
+                toolbar.setVisibility(View.VISIBLE);
+                imgCategory.setImageResource(R.drawable.ic_products);
+                imgHome.setImageResource(R.drawable.ic_home_black);
+                imgAbout.setImageResource(R.drawable.ic_about_black);
+
+                ((TextView) findViewById(R.id.tvHome)).setTextColor(getResources().getColor(R.color.gray_c));
+                ((TextView) findViewById(R.id.tvCategory)).setTextColor(getResources().getColor(R.color.black));
+                ((TextView) findViewById(R.id.tvAbout)).setTextColor(getResources().getColor(R.color.gray_c));
                 toolbar.setTitle("Category");
 
                 CategoryFragment categoryFragment = new CategoryFragment();
@@ -257,6 +279,19 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 bundle.putParcelable("data", (Parcelable) mainModal);
                 categoryFragment.setArguments(bundle);
                 fragmentUtils.replaceFragment(categoryFragment, Constant.CategoryFragment, R.id.frameLayout);
+                //drawerLayout.closeDrawer(Gravity.START);
+                break;
+            case R.id.rlAbout:
+                imgCategory.setImageResource(R.drawable.ic_product_black);
+                imgHome.setImageResource(R.drawable.ic_home_black);
+                imgAbout.setImageResource(R.drawable.ic_about);
+
+                ((TextView) findViewById(R.id.tvHome)).setTextColor(getResources().getColor(R.color.gray_c));
+                ((TextView) findViewById(R.id.tvCategory)).setTextColor(getResources().getColor(R.color.gray_c));
+                ((TextView) findViewById(R.id.tvAbout)).setTextColor(getResources().getColor(R.color.black));
+                toolbar.setVisibility(View.GONE);
+
+                fragmentUtils.replaceFragment(new AboutFragment(), Constant.AboutFragment, R.id.frameLayout);
                 //drawerLayout.closeDrawer(Gravity.START);
                 break;
             case R.id.llFlowerPot:

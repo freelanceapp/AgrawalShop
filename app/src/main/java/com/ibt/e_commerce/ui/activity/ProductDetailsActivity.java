@@ -1,5 +1,6 @@
 package com.ibt.e_commerce.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -32,6 +33,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     }
 
     private void init() {
+        findViewById(R.id.btnContact).setOnClickListener(this);
         findViewById(R.id.imgBack).setOnClickListener(this);
         productImageLists.clear();
         productData = getIntent().getParcelableExtra("product_data");
@@ -81,6 +83,14 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.imgBack:
                 finish();
+                break;
+            case R.id.btnContact:
+                Intent intent = new Intent(mContext, ContactUsActivity.class);
+                intent.putExtra("pro_name", productData.getProductType());
+                intent.putExtra("pro_price", productData.getProductPrice());
+                intent.putExtra("pro_desc", productData.getProductDescription());
+                intent.putExtra("pro_image", productData.getProductImage().get(0).getProductImage());
+                startActivity(intent);
                 break;
         }
     }
