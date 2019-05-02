@@ -73,7 +73,7 @@ public class ProductListFragment extends BaseFragment implements View.OnClickLis
 
     private void productListApi() {
         if (cd.isNetworkAvailable()) {
-            RetrofitService.getMainCategoryProductData(new Dialog(mContext), retrofitApiClient.mainCategoryProductListApi(catId), new WebResponse() {
+            RetrofitService.getMainCategoryProductData(null, retrofitApiClient.mainCategoryProductListApi(catId), new WebResponse() {
                 @Override
                 public void onResponseSuccess(Response<?> result) {
                     MainCategoryProductMainModal productMainModal = (MainCategoryProductMainModal) result.body();

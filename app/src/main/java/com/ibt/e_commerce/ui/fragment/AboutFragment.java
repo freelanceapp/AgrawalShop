@@ -36,7 +36,7 @@ public class AboutFragment extends BaseFragment {
 
     private void shopDetailAPi() {
         if (cd.isNetworkAvailable()) {
-            RetrofitService.getShopDetailData(new Dialog(mContext), retrofitApiClient.shopDetailApi(), new WebResponse() {
+            RetrofitService.getShopDetailData(null, retrofitApiClient.shopDetailApi(), new WebResponse() {
                 @Override
                 public void onResponseSuccess(Response<?> result) {
                     ShopDetailMainModal shopDetailMainModal = (ShopDetailMainModal) result.body();

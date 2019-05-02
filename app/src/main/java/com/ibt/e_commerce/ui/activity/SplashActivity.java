@@ -23,11 +23,7 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (!AppPreference.getBooleanPreference(mContext, Constant.IsFirstTime)) {
-                    startActivity(new Intent(mContext, LoginActivity.class));
-                } else {
-                    startActivity(new Intent(mContext, HomeActivity.class));
-                }
+                startActivity(new Intent(mContext, LoginActivity.class));
                 finish();
             }
         }, 3000);

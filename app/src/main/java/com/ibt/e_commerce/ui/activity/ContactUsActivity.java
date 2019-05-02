@@ -71,7 +71,7 @@ public class ContactUsActivity extends BaseActivity implements View.OnClickListe
             Alerts.show(mContext, "Enter valid contact no...!!!");
         } else {
             if (cd.isNetworkAvailable()) {
-                RetrofitService.getResponseData(new Dialog(mContext), retrofitApiClient.enquiryApi(
+                RetrofitService.getResponseData(null, retrofitApiClient.enquiryApi(
                         userName, userEmail, userPhone, proName, proPrice, proDesc), new WebResponse() {
                     @Override
                     public void onResponseSuccess(Response<?> result) {

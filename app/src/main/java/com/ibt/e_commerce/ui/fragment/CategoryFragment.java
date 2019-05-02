@@ -66,7 +66,7 @@ public class CategoryFragment extends BaseFragment implements View.OnClickListen
 
     private void categoryApi() {
         if (cd.isNetworkAvailable()) {
-            RetrofitService.getCategoryList(new Dialog(mContext), retrofitApiClient.categoryListApi(), new WebResponse() {
+            RetrofitService.getCategoryList(null, retrofitApiClient.categoryListApi(), new WebResponse() {
                 @Override
                 public void onResponseSuccess(Response<?> result) {
                     mainModal = (CategoryDataMainModal) result.body();
@@ -137,7 +137,7 @@ public class CategoryFragment extends BaseFragment implements View.OnClickListen
 
     private void bannerApi() {
         if (cd.isNetworkAvailable()) {
-            RetrofitService.getBannerList(new Dialog(mContext), retrofitApiClient.bannerListApi(), new WebResponse() {
+            RetrofitService.getBannerList(null, retrofitApiClient.bannerListApi(), new WebResponse() {
                 @Override
                 public void onResponseSuccess(Response<?> result) {
                     BannerMainModal mainModal = (BannerMainModal) result.body();
