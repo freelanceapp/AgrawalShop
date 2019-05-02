@@ -36,6 +36,7 @@ public class ContactUsActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void init() {
+        findViewById(R.id.imgBack).setOnClickListener(this);
         findViewById(R.id.btnSubmit).setOnClickListener(this);
         proName = getIntent().getStringExtra("pro_name");
         proPrice = getIntent().getStringExtra("pro_price");
@@ -105,6 +106,9 @@ public class ContactUsActivity extends BaseActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.btnSubmit:
                 enquiryApi();
+                break;
+            case R.id.imgBack:
+                finish();
                 break;
         }
     }

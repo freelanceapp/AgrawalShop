@@ -1,7 +1,6 @@
 package com.ibt.e_commerce.ui.fragment;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -18,7 +17,6 @@ import com.ibt.e_commerce.modal.category.ProductList;
 import com.ibt.e_commerce.modal.main_category_product.MainCategoryProductMainModal;
 import com.ibt.e_commerce.retrofit_provider.RetrofitService;
 import com.ibt.e_commerce.retrofit_provider.WebResponse;
-import com.ibt.e_commerce.ui.activity.ProductDetailsActivity;
 import com.ibt.e_commerce.utils.Alerts;
 import com.ibt.e_commerce.utils.BaseFragment;
 import com.ibt.e_commerce.utils.ConnectionDetector;
@@ -50,13 +48,14 @@ public class ProductListFragment extends BaseFragment implements View.OnClickLis
 
     private void init() {
         Bundle bundle = getArguments();
-        String type = bundle.getString("type");
 
-        if (type.equalsIgnoreCase("sub_cat")) {
+        String type = bundle.getString("type");
+        if (type.equalsIgnoreCase("sub")) {
             productsList = bundle.getParcelableArrayList("data");
-        } else if (type.equalsIgnoreCase("main_cat")) {
+        } else if (type.equalsIgnoreCase("main")) {
             catId = bundle.getString("cat_id");
         }
+
         recyclerViewProduct = rootView.findViewById(R.id.recyclerViewProduct);
 
         productListAdapter = new ProductListAdapter(mContext, productsList);
@@ -67,7 +66,7 @@ public class ProductListFragment extends BaseFragment implements View.OnClickLis
         recyclerViewProduct.setAdapter(productListAdapter);
         productListAdapter.notifyDataSetChanged();
 
-        if (type.equalsIgnoreCase("main_cat")) {
+        if (type.equalsIgnoreCase("main")) {
             productListApi();
         }
     }
@@ -103,6 +102,6 @@ public class ProductListFragment extends BaseFragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(mContext, ProductDetailsActivity.class));
+        //startActivity(new Intent(mContext, ProductDetailsActivity.class));
     }
 }

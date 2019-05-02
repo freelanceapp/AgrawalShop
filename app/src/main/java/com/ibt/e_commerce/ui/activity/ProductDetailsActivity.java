@@ -59,7 +59,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     private void initViewPager() {
 
         rvImage.setLayoutManager(new LinearLayoutManager(mContext));
-        imageAdapter = new ProductImageListAdapter(mContext, productImageLists, ProductDetailsActivity.this);
+        imageAdapter = new ProductImageListAdapter(mContext, productImageLists, this);
         rvImage.setAdapter(imageAdapter);
         imageAdapter.notifyDataSetChanged();
 

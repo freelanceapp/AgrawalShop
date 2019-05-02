@@ -65,10 +65,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void initViewPager() {
-        Bundle bundle = getArguments();
-        mainModal = bundle.getParcelable("data");
-        categoryLists.addAll(mainModal.getData());
-
         rootView.findViewById(R.id.llMobile).setOnClickListener(this);
         rootView.findViewById(R.id.llFlowerPot).setOnClickListener(this);
         rootView.findViewById(R.id.llWatch).setOnClickListener(this);
@@ -143,7 +139,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 toolbar.setTitle(subcategoryData.getSubCategoryName());
                 ProductListFragment productListFragment = new ProductListFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("type", "sub_cat");
+                bundle.putString("type", "sub");
                 bundle.putParcelableArrayList("data", subcategoryData.getProducts());
                 productListFragment.setArguments(bundle);
 
@@ -156,8 +152,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         recyclerViewCategory.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCategory.setAdapter(categoryListAdapter);
         categoryListAdapter.notifyDataSetChanged();
-    }
 
+        categoryApi();
+    }
 
     @Override
     public void onClick(View v) {
@@ -173,7 +170,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 } else {
                     ProductListFragment productListFragment = new ProductListFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putString("type", "main_cat");
+                    bundle.putString("type", "main");
                     bundle.putString("cat_id", categoryLists.get(pos).getCategoryId());
                     productListFragment.setArguments(bundle);
 
@@ -195,4 +192,32 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
         }
     }
+
+    private void categoryApi() {
+        if (cd.isNetworkAvailable()) {
+            RetrofitService.getCategoryList(new Dialog(mContext), retrofitApiClient.categoryListApi(), new WebResponse() {
+                @Override
+                public void onResponseSuccess(Response<?> result) {
+                    mainModal = (CategoryDataMainModal) result.body();
+                    categoryLists.clear();
+                    if (!mainModal.getError()) {
+                        if (mainModal.getData().size() > 0) {
+                            categoryLists.addAll(mainModal.getData());
+                        }
+                    } else {
+                        Alerts.show(mContext, mainModal.getMessage());
+                    }
+                    categoryListAdapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onResponseFailed(String error) {
+                    Alerts.show(mContext, error);
+                }
+            });
+        } else {
+            cd.show(mContext);
+        }
+    }
+
 }

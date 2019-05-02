@@ -1,6 +1,5 @@
 package com.ibt.e_commerce.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,11 +8,10 @@ import android.view.ViewGroup;
 
 import com.ibt.e_commerce.R;
 import com.ibt.e_commerce.retrofit_provider.RetrofitService;
-import com.ibt.e_commerce.ui.activity.ProductDetailsActivity;
 import com.ibt.e_commerce.utils.BaseFragment;
 import com.ibt.e_commerce.utils.ConnectionDetector;
 
-public class FlowerPotFragment extends BaseFragment implements View.OnClickListener {
+public class FlowerPotFragment extends BaseFragment {
 
     private View rootView;
 
@@ -31,11 +29,6 @@ public class FlowerPotFragment extends BaseFragment implements View.OnClickListe
     }
 
     private void init() {
-        rootView.findViewById(R.id.llProductA).setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View v) {
-        startActivity(new Intent(mContext, ProductDetailsActivity.class));
-    }
 }

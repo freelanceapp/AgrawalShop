@@ -1,6 +1,5 @@
 package com.ibt.e_commerce.ui.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.ibt.e_commerce.R;
 import com.ibt.e_commerce.retrofit_provider.RetrofitService;
-import com.ibt.e_commerce.ui.activity.ProductDetailsActivity;
 import com.ibt.e_commerce.utils.BaseFragment;
 import com.ibt.e_commerce.utils.ConnectionDetector;
 
@@ -36,6 +34,6 @@ public class WatchFragment extends BaseFragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(mContext, ProductDetailsActivity.class));
+        // startActivity(new Intent(mContext, ProductDetailsActivity.class));
     }
 }

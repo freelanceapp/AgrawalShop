@@ -1,7 +1,6 @@
 package com.ibt.e_commerce.ui.fragment;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -13,14 +12,13 @@ import com.ibt.e_commerce.R;
 import com.ibt.e_commerce.modal.shop_detail_data.ShopDetailMainModal;
 import com.ibt.e_commerce.retrofit_provider.RetrofitService;
 import com.ibt.e_commerce.retrofit_provider.WebResponse;
-import com.ibt.e_commerce.ui.activity.ProductDetailsActivity;
 import com.ibt.e_commerce.utils.Alerts;
 import com.ibt.e_commerce.utils.BaseFragment;
 import com.ibt.e_commerce.utils.ConnectionDetector;
 
 import retrofit2.Response;
 
-public class AboutFragment extends BaseFragment implements View.OnClickListener {
+public class AboutFragment extends BaseFragment {
 
     private View rootView;
 
@@ -59,10 +57,5 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
         } else {
             cd.show(mContext);
         }
-    }
-
-    @Override
-    public void onClick(View v) {
-        startActivity(new Intent(mContext, ProductDetailsActivity.class));
     }
 }

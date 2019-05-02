@@ -60,15 +60,40 @@ public class CategoryFragment extends BaseFragment implements View.OnClickListen
         mContext = getActivity();
         cd = new ConnectionDetector(mContext);
         retrofitApiClient = RetrofitService.getRetrofit();
-        initViewPager();
+        categoryApi();
         return rootView;
     }
 
+    private void categoryApi() {
+        if (cd.isNetworkAvailable()) {
+            RetrofitService.getCategoryList(new Dialog(mContext), retrofitApiClient.categoryListApi(), new WebResponse() {
+                @Override
+                public void onResponseSuccess(Response<?> result) {
+                    mainModal = (CategoryDataMainModal) result.body();
+                    categoryLists.clear();
+                    if (!mainModal.getError()) {
+                        if (mainModal.getData().size() > 0) {
+                            categoryLists.addAll(mainModal.getData());
+                        }
+                    } else {
+                        Alerts.show(mContext, mainModal.getMessage());
+                    }
+                    initViewPager();
+                }
+
+                @Override
+                public void onResponseFailed(String error) {
+                    Alerts.show(mContext, error);
+                }
+            });
+        } else {
+            cd.show(mContext);
+        }
+    }
+
+
     private void initViewPager() {
         rootView.findViewById(R.id.rlBanner).setVisibility(View.GONE);
-        Bundle bundle = getArguments();
-        mainModal = bundle.getParcelable("data");
-        categoryLists.addAll(mainModal.getData());
 
         rootView.findViewById(R.id.llMobile).setOnClickListener(this);
         rootView.findViewById(R.id.llFlowerPot).setOnClickListener(this);
@@ -144,7 +169,7 @@ public class CategoryFragment extends BaseFragment implements View.OnClickListen
                 toolbar.setTitle(subcategoryData.getSubCategoryName());
                 ProductListFragment productListFragment = new ProductListFragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("type", "sub_cat");
+                bundle.putString("type", "sub");
                 bundle.putParcelableArrayList("data", subcategoryData.getProducts());
                 productListFragment.setArguments(bundle);
 
@@ -167,14 +192,13 @@ public class CategoryFragment extends BaseFragment implements View.OnClickListen
             case R.id.llCategory:
                 int pos = Integer.parseInt(v.getTag().toString());
                 View view = recyclerViewCategory.getChildAt(pos);
-                // ImageView imgExpand = view.findViewById(R.id.imgExpand);
                 RecyclerView recyclerViewSubCategory = view.findViewById(R.id.recyclerViewSubCategory);
                 if (categoryLists.get(pos).getSubcategory().size() > 0) {
                     recyclerViewSubCategory.setVisibility(View.VISIBLE);
                 } else {
                     ProductListFragment productListFragment = new ProductListFragment();
                     Bundle bundle = new Bundle();
-                    bundle.putString("type", "main_cat");
+                    bundle.putString("type", "main");
                     bundle.putString("cat_id", categoryLists.get(pos).getCategoryId());
                     productListFragment.setArguments(bundle);
 

@@ -1,6 +1,5 @@
 package com.ibt.e_commerce.ui.activity;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -20,23 +19,17 @@ import com.ibt.e_commerce.custom_interface.ClickItemInterface;
 import com.ibt.e_commerce.modal.category.CategoryDataMainModal;
 import com.ibt.e_commerce.modal.category.CategoryList;
 import com.ibt.e_commerce.modal.category.Subcategory;
-import com.ibt.e_commerce.retrofit_provider.RetrofitService;
-import com.ibt.e_commerce.retrofit_provider.WebResponse;
 import com.ibt.e_commerce.ui.fragment.AboutFragment;
 import com.ibt.e_commerce.ui.fragment.CategoryFragment;
 import com.ibt.e_commerce.ui.fragment.FlowerPotFragment;
 import com.ibt.e_commerce.ui.fragment.HomeFragment;
 import com.ibt.e_commerce.ui.fragment.MobileFragment;
-import com.ibt.e_commerce.ui.fragment.ProductListFragment;
 import com.ibt.e_commerce.ui.fragment.WatchFragment;
-import com.ibt.e_commerce.utils.Alerts;
 import com.ibt.e_commerce.utils.BaseActivity;
 import com.ibt.e_commerce.utils.FragmentUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Response;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
@@ -78,37 +71,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         setSupportActionBar(toolbar);
 
         contentView = findViewById(R.id.container);
-        /*drawerLayout = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout,
-                toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
 
-            @Override
-            public void onDrawerSlide(@NonNull View view, float v) {
-                final float xOffset = view.getWidth() * v;
-                contentView.setTranslationX(xOffset);
-            }
-
-            @Override
-            public void onDrawerOpened(@NonNull View view) {
-
-            }
-
-            @Override
-            public void onDrawerClosed(@NonNull View view) {
-                contentView.animate().setDuration(300).translationX(0).translationY(0);
-            }
-
-            @Override
-            public void onDrawerStateChanged(int i) {
-
-            }
-        };
-        drawerLayout.addDrawerListener(toggle);
-        drawerLayout.setScrimColor(Color.TRANSPARENT);
-        toggle.syncState();*/
-
-        //setRecyclerViewData();
-        categoryApi();
+        initFragment();
     }
 
     private void setRecyclerViewData() {
@@ -116,14 +80,14 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             @Override
             public void getProductDetail(int categoryPos, int subCategoryPos, Subcategory subcategoryData) {
                 toolbar.setTitle(subcategoryData.getSubCategoryName());
-                ProductListFragment productListFragment = new ProductListFragment();
+                /*ProductListFragment productListFragment = new ProductListFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("type", "sub_cat");
                 bundle.putParcelableArrayList("data", subcategoryData.getProducts());
                 productListFragment.setArguments(bundle);
 
                 toolbar.setTitle("Product list");
-                fragmentUtils.replaceFragment(productListFragment, Constant.ProductListFragment, R.id.frameLayout);
+                fragmentUtils.replaceFragment(productListFragment, Constant.ProductListFragment, R.id.frameLayout);*/
                 //drawerLayout.closeDrawer(Gravity.START);
             }
         }, 1);
@@ -133,7 +97,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         recyclerViewCategory.setItemAnimator(new DefaultItemAnimator());
         recyclerViewCategory.setAdapter(categoryListAdapter);
         categoryListAdapter.notifyDataSetChanged();
-        categoryApi();
     }
 
     private void initFragment() {
@@ -148,39 +111,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
         toolbar.setTitle("Home");
         homeFragment = new HomeFragment();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable("data", (Parcelable) mainModal);
-        homeFragment.setArguments(bundle);
         fragmentUtils.replaceFragment(homeFragment, Constant.HomeFragment, R.id.frameLayout);
     }
 
-    private void categoryApi() {
-        if (cd.isNetworkAvailable()) {
-            RetrofitService.getCategoryList(new Dialog(mContext), retrofitApiClient.categoryListApi(), new WebResponse() {
-                @Override
-                public void onResponseSuccess(Response<?> result) {
-                    mainModal = (CategoryDataMainModal) result.body();
-                    categoryLists.clear();
-                    if (!mainModal.getError()) {
-                        if (mainModal.getData().size() > 0) {
-                            categoryLists.addAll(mainModal.getData());
-                        }
-                        initFragment();
-                    } else {
-                        Alerts.show(mContext, mainModal.getMessage());
-                    }
-                    //categoryListAdapter.notifyDataSetChanged();
-                }
-
-                @Override
-                public void onResponseFailed(String error) {
-                    Alerts.show(mContext, error);
-                }
-            });
-        } else {
-            cd.show(mContext);
-        }
-    }
 
     @Override
     public void onBackPressed() {
@@ -225,9 +158,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.llCategory:
-                int pos = Integer.parseInt(v.getTag().toString());
+                /*int pos = Integer.parseInt(v.getTag().toString());
                 View view = recyclerViewCategory.getChildAt(pos);
-                //ImageView imgExpand = view.findViewById(R.id.imgExpand);
                 RecyclerView recyclerViewSubCategory = view.findViewById(R.id.recyclerViewSubCategory);
                 if (categoryLists.get(pos).getSubcategory().size() > 0) {
                     recyclerViewSubCategory.setVisibility(View.VISIBLE);
@@ -239,8 +171,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                     productListFragment.setArguments(bundle);
 
                     fragmentUtils.replaceFragment(productListFragment, Constant.ProductListFragment, R.id.frameLayout);
-                    //drawerLayout.closeDrawer(Gravity.START);
-                }
+                }*/
                 break;
             case R.id.llMobile:
                 toolbar.setTitle("Mobiles");
