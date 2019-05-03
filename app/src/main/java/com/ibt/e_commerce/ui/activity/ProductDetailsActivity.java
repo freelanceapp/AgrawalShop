@@ -65,7 +65,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
 
         Glide.with(mContext)
                 .load(productImageLists.get(0).getProductImage())
-                .placeholder(R.drawable.ic_products)
+                .placeholder(R.drawable.ic_default_image)
                 .into(imgProduct);
 
 
@@ -83,7 +83,8 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     private void setData() {
         ViewCompat.setElevation(findViewById(R.id.txtDescriptionClick), 10);
         ((TextView) findViewById(R.id.txtProductName)).setText(productData.getProductType());
-        ((TextView) findViewById(R.id.txtPrice)).setText("Rs. " + productData.getProductPrice());
+        String rupeeSymbol = getResources().getString(R.string.Rs);
+        ((TextView) findViewById(R.id.txtPrice)).setText(rupeeSymbol + " " + productData.getProductPrice());
         ((TextView) findViewById(R.id.txtDescription)).setText(productData.getProductDescription());
         ((TextView) findViewById(R.id.txtWarrantyDescription)).setText(productData.getProductWarranty());
     }
@@ -99,8 +100,14 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 findViewById(R.id.txtWarrantyClick).setBackgroundResource(R.drawable.btn_bg_gray);
                 findViewById(R.id.txtDescription).setVisibility(View.VISIBLE);
                 findViewById(R.id.txtWarrantyDescription).setVisibility(View.GONE);
+
+                ((TextView) findViewById(R.id.txtDescriptionClick)).setTextColor(getResources().getColor(R.color.black));
+                ((TextView) findViewById(R.id.txtWarrantyClick)).setTextColor(getResources().getColor(R.color.white));
                 break;
             case R.id.txtWarrantyClick:
+                ((TextView) findViewById(R.id.txtDescriptionClick)).setTextColor(getResources().getColor(R.color.white));
+                ((TextView) findViewById(R.id.txtWarrantyClick)).setTextColor(getResources().getColor(R.color.black));
+
                 ViewCompat.setElevation(findViewById(R.id.txtDescriptionClick), 0);
                 ViewCompat.setElevation(findViewById(R.id.txtWarrantyClick), 10);
 
@@ -124,7 +131,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 int tag = (int) v.getTag();
                 Glide.with(mContext)
                         .load(productImageLists.get(tag).getProductImage())
-                        .placeholder(R.drawable.ic_products)
+                        .placeholder(R.drawable.ic_default_image)
                         .into(imgProduct);
                 break;
         }

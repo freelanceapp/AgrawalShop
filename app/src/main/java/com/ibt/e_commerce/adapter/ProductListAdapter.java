@@ -38,12 +38,13 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.txtProductName.setText(productLists.get(position).getProductType());
-        holder.txtProductPrice.setText("Rs. " + productLists.get(position).getProductPrice());
+        String rupeeSymbol = context.getResources().getString(R.string.Rs);
+        holder.txtProductPrice.setText(rupeeSymbol + " " + productLists.get(position).getProductPrice());
 
         if (productLists.get(position).getProductImage().size() > 0) {
             Glide.with(context)
                     .load(productLists.get(position).getProductImage().get(0).getProductImage())
-                    .placeholder(R.drawable.default_banner_img)
+                    .placeholder(R.drawable.ic_default_image)
                     .into(holder.imgProduct);
         }
 

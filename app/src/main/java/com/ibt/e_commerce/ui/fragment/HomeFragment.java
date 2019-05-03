@@ -1,11 +1,11 @@
 package com.ibt.e_commerce.ui.fragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +40,7 @@ import static com.ibt.e_commerce.ui.activity.HomeActivity.toolbar;
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private View rootView;
-
+    private SwipeRefreshLayout swipeRefreshLayout;
     private Handler imageHandler;
     private Runnable imageRunnable;
     private ViewPager pagerSuccess;
@@ -153,6 +153,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         recyclerViewCategory.setAdapter(categoryListAdapter);
         categoryListAdapter.notifyDataSetChanged();
 
+        swipeRefreshLayout = rootView.findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                categoryApi();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         categoryApi();
     }
 

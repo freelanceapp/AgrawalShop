@@ -59,7 +59,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 Glide.with(context)
                         .load(categoryLists.get(position).getCategoryImage())
-                        .placeholder(R.drawable.ic_error)
+                        .placeholder(R.drawable.ic_default_image)
                         .into(navViewHolder.imgCategory);
 
                 navViewHolder.llCategory.setTag(position);
@@ -79,7 +79,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
                 Glide.with(context)
                         .load(categoryLists.get(position).getCategoryImage())
-                        .placeholder(R.drawable.ic_error)
+                        .placeholder(R.drawable.ic_default_image)
                         .into(homeViewHolder.imgCategory);
 
                 if (position == 0) {

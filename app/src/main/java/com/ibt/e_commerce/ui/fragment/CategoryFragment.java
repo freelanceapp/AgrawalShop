@@ -1,11 +1,11 @@
 package com.ibt.e_commerce.ui.fragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,6 +41,7 @@ public class CategoryFragment extends BaseFragment implements View.OnClickListen
 
     private View rootView;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     private Handler imageHandler;
     private Runnable imageRunnable;
     private ViewPager pagerSuccess;
@@ -60,6 +61,14 @@ public class CategoryFragment extends BaseFragment implements View.OnClickListen
         mContext = getActivity();
         cd = new ConnectionDetector(mContext);
         retrofitApiClient = RetrofitService.getRetrofit();
+        swipeRefreshLayout = rootView.findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                categoryApi();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         categoryApi();
         return rootView;
     }
@@ -90,7 +99,6 @@ public class CategoryFragment extends BaseFragment implements View.OnClickListen
             cd.show(mContext);
         }
     }
-
 
     private void initViewPager() {
         rootView.findViewById(R.id.rlBanner).setVisibility(View.GONE);

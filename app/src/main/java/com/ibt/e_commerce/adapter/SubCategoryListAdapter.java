@@ -56,6 +56,7 @@ public class SubCategoryListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
                 Glide.with(context)
                         .load("")
+                        .placeholder(R.drawable.ic_default_image)
                         .into(navViewHolder.imgCategory);
 
                 navViewHolder.llCategory.setOnClickListener(new View.OnClickListener() {

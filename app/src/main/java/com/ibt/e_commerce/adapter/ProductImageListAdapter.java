@@ -38,7 +38,7 @@ public class ProductImageListAdapter extends RecyclerView.Adapter<ProductImageLi
 
         Glide.with(context)
                 .load(productLists.get(position).getProductImage())
-                .placeholder(R.drawable.ic_products)
+                .placeholder(R.drawable.ic_default_image)
                 .into(holder.imgProduct);
 
         holder.ivListProduct.setTag(position);

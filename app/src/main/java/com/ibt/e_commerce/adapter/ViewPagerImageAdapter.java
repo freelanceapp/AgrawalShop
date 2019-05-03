@@ -45,7 +45,7 @@ public class ViewPagerImageAdapter extends PagerAdapter {
         String strUrl = dataList.get(position).getProductImage();
         Glide.with(mContext)
                 .load(strUrl)
-                .placeholder(R.drawable.default_banner_img)
+                .placeholder(R.drawable.ic_default_image)
                 .into(imageView);
         container.addView(itemView);
         return itemView;

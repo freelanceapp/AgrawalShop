@@ -18,6 +18,7 @@
                 android:id="@+id/imgBack"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
+                android:layout_centerVertical="true"
                 android:layout_margin="20dp"
                 android:background="?selectableItemBackgroundBorderless"
                 android:src="@drawable/ic_chevron_left"
@@ -25,13 +26,13 @@
 
             <TextView
                 android:id="@+id/txtProductName"
-                android:layout_width="150dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_marginTop="16dp"
-                android:layout_toRightOf="@+id/imgBack"
-                android:text="Product \nDetails"
+                android:layout_toEndOf="@+id/imgBack"
                 android:textColor="@color/black"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
         </RelativeLayout>
 
@@ -185,6 +186,7 @@
                                 android:background="@drawable/btn_bg_gray"
                                 android:gravity="center"
                                 android:text="Warranty"
+                                android:textColor="@color/white"
                                 android:textSize="16sp" />
 
                         </LinearLayout>

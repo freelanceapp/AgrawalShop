@@ -1,6 +1,5 @@
 package com.ibt.e_commerce.ui.activity;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,13 +42,14 @@ public class ContactUsActivity extends BaseActivity implements View.OnClickListe
         proDesc = getIntent().getStringExtra("pro_desc");
         proImage = getIntent().getStringExtra("pro_image");
 
+        String rupeeSymbol = getResources().getString(R.string.Rs);
         ((EditText) findViewById(R.id.edtProductName)).setText(proName);
-        ((EditText) findViewById(R.id.edtProductPrice)).setText(proPrice);
+        ((EditText) findViewById(R.id.edtProductPrice)).setText(rupeeSymbol + " " + proPrice);
         ((EditText) findViewById(R.id.edtProductDescription)).setText(proDesc);
 
         Glide.with(mContext)
                 .load(proImage)
-                .placeholder(R.drawable.ic_products)
+                .placeholder(R.drawable.ic_default_image)
                 .into((ImageView) findViewById(R.id.imgProduct));
 
     }

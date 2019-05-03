@@ -34,6 +34,7 @@ public class ThankYouActivity extends BaseActivity {
 
         Glide.with(this)
                 .load(str)
+                .placeholder(R.drawable.ic_default_image)
                 .into(img);
 
     }
